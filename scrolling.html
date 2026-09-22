@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Horizontal Scroll</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        .container {
+            display: flex;
+            width: 600vw;
+            height: 100vh;
+        }
+
+        .page {
+            width: 100vw;
+            height: 100vh; 
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 50px;
+            font-family: Arial;
+            color: white;
+
+            flex-shrink: 0;
+        }
+
+        .page1 {
+            background: #6b7280;
+        }
+
+        .page2 {
+            background: #8174a0;
+        }
+
+        .page3 {
+            background: #5f8f8c;
+        }
+
+        .page4 {
+            background: #789276;
+        }
+
+        .page5 {
+            background: #9b8065;
+        }
+
+        .page6 {
+            background: #766477;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="page page1">1</div>
+
+        <div class="page page2">2</div>
+
+        <div class="page page3">3</div>
+
+        <div class="page page4">4</div>
+
+        <div class="page page5">5</div>
+
+        <div class="page page6">6</div>
+
+    </div>
+
+</body>
+</html>

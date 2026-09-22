@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>87% Progress</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: black;
+        }
+
+        .circle {
+            width: 200px;
+            height: 200px;
+            margin: 80px auto;
+            border-radius: 50%;
+
+            background: conic-gradient(
+                from -90deg,
+                lightblue 0deg,
+                #00aaff 150deg,
+                blue 313.2deg,
+                black 313.2deg,
+                black 360deg
+            );
+
+            position: relative;
+        }
+
+        .circle::before {
+            content: "";
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            top: 20px;
+            left: 20px;
+            border-radius: 50%;
+            background: black;
+        }
+
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="circle">
+        <div class="text">87%</div>
+    </div>
+
+</body>
+</html>
