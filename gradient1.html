@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Gradients</title>
+
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .item {
+            display: inline-block;
+            width: 250px;
+            margin: 10px;
+            vertical-align: top;
+        }
+
+        .box {
+            width: 250px;
+            height: 200px;
+            border: 2px solid black;
+        }
+
+        /* Linear Gradient - Left to Right */
+        .linear {
+            background: linear-gradient(to right, black, red);
+        }
+
+        /* Radial Gradient */
+        .radial {
+            background: radial-gradient(circle, red, black);
+        }
+
+        /* Conic Gradient */
+        .conic {
+            background: conic-gradient(red, black, red);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="item">
+            <h2>Linear Gradient</h2>
+            <div class="box linear"></div>
+        </div>
+
+        <div class="item">
+            <h2>Radial Gradient</h2>
+            <div class="box radial"></div>
+        </div>
+
+        <div class="item">
+            <h2>Conic Gradient</h2>
+            <div class="box conic"></div>
+        </div>
+
+    </div>
+
+</body>
+</html>

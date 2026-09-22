@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShopKart - Product Listing</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F8FAFC;
+        }
+
+        /* Product image zoom */
+        .product-image {
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.08);
+        }
+
+        /* Product card hover */
+        .product-card {
+            transition:
+                box-shadow 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
+            transform: translateY(-3px);
+        }
+
+        /* Button hover */
+        .cart-btn {
+            transition: all 0.25s ease;
+        }
+
+        .cart-btn:hover {
+            background: #1D4ED8;
+            transform: translateY(-1px);
+        }
+
+        /* Hide scrollbar for mobile filter */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body class="text-[#111827]">
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="bg-white border-b border-[#E5E7EB] sticky top-0 z-50">
+
+        <nav class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="h-16 flex items-center justify-between gap-4">
+
+                <!-- Logo -->
+                <div class="flex items-center gap-2 shrink-0">
+                    <div
+                        class="w-8 h-8 rounded-lg bg-[#2563EB]
+                        flex items-center justify-center text-white
+                        font-bold text-sm"
+                    >
+                        S
+                    </div>
+
+                    <span class="font-bold text-lg">
+                        ShopKart
+                    </span>
+                </div>
+
+
+                <!-- Search -->
+                <div class="hidden sm:flex flex-1 max-w-xl relative">
+
+                    <input
+                        type="text"
+                        placeholder="Search for products..."
+                        class="w-full h-10 rounded-lg
+                        border border-[#E5E7EB]
+                        bg-[#F8FAFC]
+                        px-4 pr-10
+                        text-sm outline-none
+                        focus:border-[#2563EB]
+                        focus:ring-2 focus:ring-blue-100"
+                    >
+
+                    <span
+                        class="absolute right-3 top-1/2
+                        -translate-y-1/2 text-[#6B7280]"
+                    >
+                        🔍
+                    </span>
+                </div>
+
+
+                <!-- Navigation Icons -->
+                <div class="flex items-center gap-4">
+
+                    <button class="hidden sm:block text-[#6B7280] hover:text-[#2563EB]">
+                        🛒
+                    </button>
+
+                    <button class="hidden sm:block text-[#6B7280] hover:text-[#2563EB]">
+                        ♡
+                    </button>
+
+                    <button class="text-[#6B7280] hover:text-[#2563EB]">
+                        👤
+                    </button>
+
+                    <!-- Mobile menu -->
+                    <button
+                        class="sm:hidden text-xl"
+                        onclick="toggleMenu()"
+                    >
+                        ☰
+                    </button>
+
+                </div>
+            </div>
+
+
+            <!-- Mobile Navigation -->
+            <div
+                id="mobileMenu"
+                class="hidden sm:hidden pb-4"
+            >
+                <input
+                    type="text"
+                    placeholder="Search products..."
+                    class="w-full border border-[#E5E7EB]
+                    rounded-lg px-4 py-2 text-sm mb-3"
+                >
+
+                <div class="flex gap-5 text-sm text-[#6B7280]">
+                    <span>Products</span>
+                    <span>Cart</span>
+                    <span>Wishlist</span>
+                </div>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- Breadcrumb -->
+        <div class="flex items-center gap-2 text-sm text-[#6B7280] mb-6">
+            <span>Home</span>
+            <span>/</span>
+            <span class="text-[#111827]">Electronics</span>
+        </div>
+
+
+        <!-- ================= TABLET FILTER BAR ================= -->
+
+        <div class="lg:hidden mb-6">
+
+            <div
+                class="bg-white border border-[#E5E7EB]
+                rounded-xl p-3
+                flex items-center gap-3
+                overflow-x-auto hide-scrollbar"
+            >
+
+                <button
+                    class="shrink-0 px-4 py-2 rounded-lg
+                    border border-[#E5E7EB]
+                    text-sm font-medium"
+                >
+                    ⚙ Filters
+                </button>
+
+                <button
+                    class="shrink-0 px-4 py-2 rounded-lg
+                    border border-[#E5E7EB]
+                    text-sm"
+                >
+                    Category
+                </button>
+
+                <button
+                    class="shrink-0 px-4 py-2 rounded-lg
+                    border border-[#E5E7EB]
+                    text-sm"
+                >
+                    Price
+                </button>
+
+                <button
+                    class="shrink-0 px-4 py-2 rounded-lg
+                    border border-[#E5E7EB]
+                    text-sm"
+                >
+                    Brand
+                </button>
+
+                <button
+                    class="shrink-0 px-4 py-2 rounded-lg
+                    border border-[#E5E7EB]
+                    text-sm"
+                >
+                    Rating
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= MAIN GRID ================= -->
+
+        <div class="flex gap-8 items-start">
+
+
+            <!-- ================= SIDEBAR ================= -->
+
+            <aside
+                class="hidden lg:block w-[240px]
+                shrink-0 bg-white
+                border border-[#E5E7EB]
+                rounded-xl p-5"
+            >
+
+                <!-- Filters -->
+                <div class="flex items-center justify-between mb-6">
+
+                    <h2 class="text-base font-semibold">
+                        Filters
+                    </h2>
+
+                    <button class="text-xs text-[#2563EB]">
+                        Clear
+                    </button>
+
+                </div>
+
+
+                <!-- Category -->
+                <div class="mb-6">
+
+                    <h3 class="font-semibold text-sm mb-3">
+                        Category
+                    </h3>
+
+                    <div class="space-y-3 text-sm text-[#6B7280]">
+
+                        <label class="flex gap-2 items-center">
+                            <input type="checkbox">
+                            Laptops
+                        </label>
+
+                        <label class="flex gap-2 items-center">
+                            <input type="checkbox">
+                            Desktops
+                        </label>
+
+                        <label class="flex gap-2 items-center">
+                            <input type="checkbox">
+                            Tablets
+                        </label>
+
+                        <label class="flex gap-2 items-center">
+                            <input type="checkbox">
+                            Accessories
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Price -->
+                <div class="mb-6">
+
+                    <h3 class="font-semibold text-sm mb-3">
+                        Price Range
+                    </h3>
+
+                    <div class="space-y-3 text-sm text-[#6B7280]">
+
+                        <label class="flex gap-2 items-center">
+                            <input type="checkbox">
+                            ₹10,000 - ₹30,000
+                        </label>
+
+                        <label class="flex gap-2 items-center">
+                            <input type="checkbox">
+                            ₹30,000 - ₹50,000
+                        </label>
+
+                        <label class="flex gap-2 items-center">
+                            <input type="checkbox">
+                            ₹50,000 - ₹80,000
+                        </label>
+
+                        <label class="flex gap-2 items-center">
+                            <input type="checkbox">
+                            ₹80,000+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Brand -->
+                <div>
+
+                    <h3 class="font-semibold text-sm mb-3">
+                        Brand
+                    </h3>
+
+                    <div class="space-y-3 text-sm text-[#6B7280]">
+
+                        <label class="flex gap-2 items-center">
+                            <input type="checkbox">
+                            Dell
+                        </label>
+
+                        <label class="flex gap-2 items-center">
+                            <input type="checkbox">
+                            HP
+                        </label>
+
+                        <label class="flex gap-2 items-center">
+                            <input type="checkbox">
+                            Lenovo
+                        </label>
+
+                        <label class="flex gap-2 items-center">
+                            <input type="checkbox">
+                            Apple
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+
+            <!-- ================= PRODUCTS AREA ================= -->
+
+            <section class="flex-1 min-w-0">
+
+                <!-- Products Header -->
+                <div
+                    class="flex flex-col sm:flex-row
+                    sm:items-center
+                    justify-between gap-3 mb-5"
+                >
+
+                    <div>
+
+                        <h1 class="text-2xl font-bold">
+                            Laptops
+                        </h1>
+
+                        <p class="text-sm text-[#6B7280] mt-1">
+                            Showing 12 products
+                        </p>
+
+                    </div>
+
+
+                    <select
+                        class="border border-[#E5E7EB]
+                        bg-white rounded-lg
+                        px-4 py-2 text-sm
+                        outline-none
+                        focus:border-[#2563EB]"
+                    >
+                        <option>Sort by: Popularity</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Newest</option>
+                    </select>
+
+                </div>
+
+
+                <!-- ================= PRODUCT GRID ================= -->
+
+                <div
+                    class="grid
+                    grid-cols-1
+                    sm:grid-cols-2
+                    lg:grid-cols-3
+                    xl:grid-cols-4
+                    gap-6"
+                >
+
+
+                    <!-- PRODUCT 1 -->
+                    <div class="product-card bg-white border border-[#E5E7EB] rounded-xl overflow-hidden">
+
+                        <div class="relative h-[220px] overflow-hidden">
+
+                            <span
+                                class="absolute top-3 left-3 z-10
+                                bg-[#DC2626] text-white
+                                text-xs font-semibold
+                                px-2 py-1 rounded"
+                            >
+                                SALE
+                            </span>
+
+                            <button
+                                class="absolute top-3 right-3 z-10
+                                bg-white rounded-full
+                                w-8 h-8 shadow-sm"
+                            >
+                                ♡
+                            </button>
+
+                            <img
+                                src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=80"
+                                alt="Dell Inspiron 15"
+                                class="product-image w-full h-full object-cover"
+                            >
+
+                        </div>
+
+
+                        <div class="p-4 flex flex-col">
+
+                            <span class="text-[13px] text-[#6B7280]">
+                                Laptops
+                            </span>
+
+                            <h2 class="text-base font-semibold mt-1">
+                                Dell Inspiron 15
+                            </h2>
+
+                            <div class="flex items-center gap-1 mt-2 text-sm">
+                                <span class="text-[#F59E0B]">★</span>
+                                <span class="text-[#6B7280]">
+                                    4.5 (120)
+                                </span>
+                            </div>
+
+                            <div class="flex items-center gap-2 mt-3">
+
+                                <span class="text-xl font-bold">
+                                    ₹45,990
+                                </span>
+
+                                <span class="text-sm text-[#6B7280] line-through">
+                                    ₹60,490
+                                </span>
+
+                            </div>
+
+                            <button
+                                class="cart-btn mt-4
+                                w-full bg-[#2563EB]
+                                text-white
+                                py-2.5 rounded-lg
+                                text-sm font-semibold"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRODUCT 2 -->
+                    <div class="product-card bg-white border border-[#E5E7EB] rounded-xl overflow-hidden">
+
+                        <div class="relative h-[220px] overflow-hidden">
+
+                            <span
+                                class="absolute top-3 left-3 z-10
+                                bg-green-500 text-white
+                                text-xs font-semibold
+                                px-2 py-1 rounded"
+                            >
+                                NEW
+                            </span>
+
+                            <button
+                                class="absolute top-3 right-3 z-10
+                                bg-white rounded-full
+                                w-8 h-8 shadow-sm"
+                            >
+                                ♡
+                            </button>
+
+                            <img
+                                src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=700&q=80"
+                                alt="HP Pavilion"
+                                class="product-image w-full h-full object-cover"
+                            >
+
+                        </div>
+
+
+                        <div class="p-4 flex flex-col">
+
+                            <span class="text-[13px] text-[#6B7280]">
+                                Laptops
+                            </span>
+
+                            <h2 class="text-base font-semibold mt-1">
+                                HP Pavilion
+                            </h2>
+
+                            <div class="flex items-center gap-1 mt-2 text-sm">
+                                <span class="text-[#F59E0B]">★</span>
+                                <span class="text-[#6B7280]">
+                                    4.6 (82)
+                                </span>
+                            </div>
+
+                            <div class="flex items-center gap-2 mt-3">
+
+                                <span class="text-xl font-bold">
+                                    ₹52,990
+                                </span>
+
+                            </div>
+
+                            <button
+                                class="cart-btn mt-4
+                                w-full bg-[#2563EB]
+                                text-white py-2.5
+                                rounded-lg text-sm font-semibold"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRODUCT 3 -->
+                    <div class="product-card bg-white border border-[#E5E7EB] rounded-xl overflow-hidden">
+
+                        <div class="relative h-[220px] overflow-hidden">
+
+                            <button
+                                class="absolute top-3 right-3 z-10
+                                bg-white rounded-full
+                                w-8 h-8 shadow-sm"
+                            >
+                                ♡
+                            </button>
+
+                            <img
+                                src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=700&q=80"
+                                alt="Lenovo IdeaPad"
+                                class="product-image w-full h-full object-cover"
+                            >
+
+                        </div>
+
+
+                        <div class="p-4 flex flex-col">
+
+                            <span class="text-[13px] text-[#6B7280]">
+                                Laptops
+                            </span>
+
+                            <h2 class="text-base font-semibold mt-1">
+                                Lenovo IdeaPad
+                            </h2>
+
+                            <div class="flex items-center gap-1 mt-2 text-sm">
+                                <span class="text-[#F59E0B]">★</span>
+                                <span class="text-[#6B7280]">
+                                    4.4 (63)
+                                </span>
+                            </div>
+
+                            <div class="flex items-center gap-2 mt-3">
+
+                                <span class="text-xl font-bold">
+                                    ₹39,990
+                                </span>
+
+                            </div>
+
+                            <button
+                                class="cart-btn mt-4
+                                w-full bg-[#2563EB]
+                                text-white py-2.5
+                                rounded-lg text-sm font-semibold"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRODUCT 4 -->
+                    <div class="product-card bg-white border border-[#E5E7EB] rounded-xl overflow-hidden">
+
+                        <div class="relative h-[220px] overflow-hidden">
+
+                            <button
+                                class="absolute top-3 right-3 z-10
+                                bg-white rounded-full
+                                w-8 h-8 shadow-sm"
+                            >
+                                ♡
+                            </button>
+
+                            <img
+                                src="https://images.unsplash.com/photo-1602080858428-57174f9431cf?auto=format&fit=crop&w=700&q=80"
+                                alt="MacBook Air M2"
+                                class="product-image w-full h-full object-cover"
+                            >
+
+                        </div>
+
+
+                        <div class="p-4 flex flex-col">
+
+                            <span class="text-[13px] text-[#6B7280]">
+                                Laptops
+                            </span>
+
+                            <h2 class="text-base font-semibold mt-1">
+                                MacBook Air M2
+                            </h2>
+
+                            <div class="flex items-center gap-1 mt-2 text-sm">
+                                <span class="text-[#F59E0B]">★</span>
+                                <span class="text-[#6B7280]">
+                                    4.8 (94)
+                                </span>
+                            </div>
+
+                            <div class="flex items-center gap-2 mt-3">
+
+                                <span class="text-xl font-bold">
+                                    ₹92,000
+                                </span>
+
+                            </div>
+
+                            <button
+                                class="cart-btn mt-4
+                                w-full bg-[#2563EB]
+                                text-white py-2.5
+                                rounded-lg text-sm font-semibold"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRODUCT 5 -->
+                    <div class="product-card bg-white border border-[#E5E7EB] rounded-xl overflow-hidden">
+
+                        <div class="relative h-[220px] overflow-hidden">
+
+                            <button
+                                class="absolute top-3 right-3 z-10
+                                bg-white rounded-full
+                                w-8 h-8 shadow-sm"
+                            >
+                                ♡
+                            </button>
+
+                            <img
+                                src="https://images.unsplash.com/photo-1593642532400-2682810df593?auto=format&fit=crop&w=700&q=80"
+                                alt="ASUS Vivobook"
+                                class="product-image w-full h-full object-cover"
+                            >
+
+                        </div>
+
+
+                        <div class="p-4 flex flex-col">
+
+                            <span class="text-[13px] text-[#6B7280]">
+                                Laptops
+                            </span>
+
+                            <h2 class="text-base font-semibold mt-1">
+                                ASUS Vivobook
+                            </h2>
+
+                            <div class="flex items-center gap-1 mt-2 text-sm">
+                                <span class="text-[#F59E0B]">★</span>
+                                <span class="text-[#6B7280]">
+                                    4.3 (74)
+                                </span>
+                            </div>
+
+                            <div class="flex items-center gap-2 mt-3">
+
+                                <span class="text-xl font-bold">
+                                    ₹41,990
+                                </span>
+
+                            </div>
+
+                            <button
+                                class="cart-btn mt-4
+                                w-full bg-[#2563EB]
+                                text-white py-2.5
+                                rounded-lg text-sm font-semibold"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRODUCT 6 -->
+                    <div class="product-card bg-white border border-[#E5E7EB] rounded-xl overflow-hidden">
+
+                        <div class="relative h-[220px] overflow-hidden">
+
+                            <span
+                                class="absolute top-3 left-3 z-10
+                                bg-[#DC2626] text-white
+                                text-xs font-semibold
+                                px-2 py-1 rounded"
+                            >
+                                SALE
+                            </span>
+
+                            <button
+                                class="absolute top-3 right-3 z-10
+                                bg-white rounded-full
+                                w-8 h-8 shadow-sm"
+                            >
+                                ♡
+                            </button>
+
+                            <img
+                                src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=700&q=80"
+                                alt="Dell XPS 13"
+                                class="product-image w-full h-full object-cover"
+                            >
+
+                        </div>
+
+
+                        <div class="p-4 flex flex-col">
+
+                            <span class="text-[13px] text-[#6B7280]">
+                                Laptops
+                            </span>
+
+                            <h2 class="text-base font-semibold mt-1">
+                                Dell XPS 13
+                            </h2>
+
+                            <div class="flex items-center gap-1 mt-2 text-sm">
+                                <span class="text-[#F59E0B]">★</span>
+                                <span class="text-[#6B7280]">
+                                    4.7 (61)
+                                </span>
+                            </div>
+
+                            <div class="flex items-center gap-2 mt-3">
+
+                                <span class="text-xl font-bold">
+                                    ₹89,990
+                                </span>
+
+                                <span class="text-sm text-[#6B7280] line-through">
+                                    ₹99,990
+                                </span>
+
+                            </div>
+
+                            <button
+                                class="cart-btn mt-4
+                                w-full bg-[#2563EB]
+                                text-white py-2.5
+                                rounded-lg text-sm font-semibold"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRODUCT 7 -->
+                    <div class="product-card bg-white border border-[#E5E7EB] rounded-xl overflow-hidden">
+
+                        <div class="relative h-[220px] overflow-hidden">
+
+                            <span
+                                class="absolute top-3 left-3 z-10
+                                bg-green-500 text-white
+                                text-xs font-semibold
+                                px-2 py-1 rounded"
+                            >
+                                NEW
+                            </span>
+
+                            <button
+                                class="absolute top-3 right-3 z-10
+                                bg-white rounded-full
+                                w-8 h-8 shadow-sm"
+                            >
+                                ♡
+                            </button>
+
+                            <img
+                                src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=80"
+                                alt="Acer Aspire"
+                                class="product-image w-full h-full object-cover"
+                            >
+
+                        </div>
+
+
+                        <div class="p-4 flex flex-col">
+
+                            <span class="text-[13px] text-[#6B7280]">
+                                Laptops
+                            </span>
+
+                            <h2 class="text-base font-semibold mt-1">
+                                Acer Aspire 5
+                            </h2>
+
+                            <div class="flex items-center gap-1 mt-2 text-sm">
+                                <span class="text-[#F59E0B]">★</span>
+                                <span class="text-[#6B7280]">
+                                    4.2 (54)
+                                </span>
+                            </div>
+
+                            <div class="flex items-center gap-2 mt-3">
+
+                                <span class="text-xl font-bold">
+                                    ₹36,990
+                                </span>
+
+                            </div>
+
+                            <button
+                                class="cart-btn mt-4
+                                w-full bg-[#2563EB]
+                                text-white py-2.5
+                                rounded-lg text-sm font-semibold"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRODUCT 8 -->
+                    <div class="product-card bg-white border border-[#E5E7EB] rounded-xl overflow-hidden">
+
+                        <div class="relative h-[220px] overflow-hidden">
+
+                            <button
+                                class="absolute top-3 right-3 z-10
+                                bg-white rounded-full
+                                w-8 h-8 shadow-sm"
+                            >
+                                ♡
+                            </button>
+
+                            <img
+                                src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=700&q=80"
+                                alt="HP Envy"
+                                class="product-image w-full h-full object-cover"
+                            >
+
+                        </div>
+
+
+                        <div class="p-4 flex flex-col">
+
+                            <span class="text-[13px] text-[#6B7280]">
+                                Laptops
+                            </span>
+
+                            <h2 class="text-base font-semibold mt-1">
+                                HP Envy
+                            </h2>
+
+                            <div class="flex items-center gap-1 mt-2 text-sm">
+                                <span class="text-[#F59E0B]">★</span>
+                                <span class="text-[#6B7280]">
+                                    4.6 (45)
+                                </span>
+                            </div>
+
+                            <div class="flex items-center gap-2 mt-3">
+
+                                <span class="text-xl font-bold">
+                                    ₹67,990
+                                </span>
+
+                            </div>
+
+                            <button
+                                class="cart-btn mt-4
+                                w-full bg-[#2563EB]
+                                text-white py-2.5
+                                rounded-lg text-sm font-semibold"
+                            >
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function toggleMenu() {
+
+            const menu = document.getElementById("mobileMenu");
+
+            menu.classList.toggle("hidden");
+
+        }
+
+    </script>
+
+</body>
+</html>

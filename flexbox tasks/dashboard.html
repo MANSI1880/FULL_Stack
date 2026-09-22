@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Layout</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f2f2f2;
+}
+
+/* Main Dashboard */
+
+.dashboard{
+    display:flex;
+    height:100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+    width:230px;
+    background:#111;
+    color:white;
+    padding:25px 20px;
+}
+
+.sidebar h2{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:28px;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar li{
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:6px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.sidebar li:hover{
+    background:#333;
+}
+
+/* Main Content */
+
+.main{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+}
+
+/* Top Navigation */
+
+.topnav{
+    height:70px;
+    background:#111;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 35px;
+}
+
+.topnav h2{
+    font-size:24px;
+    font-weight:600;
+}
+
+.right-nav{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    font-size:18px;
+}
+
+.bell{
+    font-size:22px;
+    cursor:pointer;
+}
+
+.user{
+    cursor:pointer;
+}
+
+/* Content Area */
+
+.content{
+    padding:30px;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <h2>Admin</h2>
+
+        <ul>
+            <li>📊 Dashboard</li>
+            <li>👤 User</li>
+            <li>📦 Product</li>
+            <li>🛒 Order</li>
+            <li>⚙ Setting</li>
+        </ul>
+
+    </div>
+
+    <!-- Main -->
+
+    <div class="main">
+
+        <!-- Top Navigation -->
+
+        <div class="topnav">
+
+            <h2>Dashboard Overview</h2>
+
+            <div class="right-nav">
+                <span class="bell">🔔</span>
+                <span class="user">User</span>
+            </div>
+
+        </div>
+
+        <!-- Content -->
+
+        <div class="content">
+
+            <!-- Cards and table will come here -->
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blue Glow</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: black;
+        }
+
+        .glow {
+            width: 250px;
+            height: 250px;
+            margin: 50px auto;
+
+            background: radial-gradient(
+                circle,
+                white 0%,
+                #8fd8ff 5%,
+                #008cff 15%,
+                #0055ff 30%,
+                rgba(0, 85, 255, 0.5) 45%,
+                rgba(0, 85, 255, 0.2) 60%,
+                transparent 75%
+            );
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="glow"></div>
+
+</body>
+</html>

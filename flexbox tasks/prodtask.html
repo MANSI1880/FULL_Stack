@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Glass Image Effect</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+
+            /* Background image */
+            background-image: url("https://images.unsplash.com/photo-1500534623283-312aade485b7");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Glass container */
+        .glass-box {
+            width: 500px;
+            padding: 25px;
+
+            background: rgba(255, 255, 255, 0.20);
+
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+            text-align: center;
+            color: white;
+        }
+
+        /* Image inside glass box */
+        .glass-box img {
+            width: 100%;
+            height: 280px;
+
+            object-fit: cover;
+            border-radius: 15px;
+
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="glass-box">
+
+        <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7"
+             alt="Nature">
+
+        <h1>Beautiful Nature</h1>
+
+
+    </div>
+
+</body>
+</html>
