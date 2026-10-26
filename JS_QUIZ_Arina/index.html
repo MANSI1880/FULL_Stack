@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f4ff">
+  <title>Quiz Arena | JavaScript Challenge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Quiz Arena home" id="home-link">
+        <span class="brand-icon" aria-hidden="true">Q</span>
+        <span>quiz<span class="brand-accent">arena</span></span>
+      </a>
+      <div class="topic-pill"><span class="topic-dot"></span> JAVASCRIPT CHALLENGE</div>
+      <button class="restart-button" id="restart-button" type="button" aria-label="Restart quiz">
+        <span aria-hidden="true">↻</span> Restart
+      </button>
+    </header>
+
+    <section class="quiz-layout" id="quiz-screen" aria-live="polite">
+      <div class="quiz-column">
+        <div class="quiz-meta">
+          <div class="question-count" id="question-count">QUESTION <strong>01</strong> <span>/ 25</span></div>
+          <div class="score-display"><span class="score-star" aria-hidden="true">✦</span> Score <strong id="score">0</strong></div>
+        </div>
+
+        <div class="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="25" aria-valuenow="1">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+
+        <div class="question-heading">
+          <span class="eyebrow">PICK THE RIGHT ANSWER</span>
+          <h1 id="question-text"></h1>
+        </div>
+
+        <div class="options-list" id="options-list"></div>
+
+        <div class="feedback" id="feedback" hidden>
+          <div class="feedback-title" id="feedback-title"></div>
+          <p id="explanation"></p>
+        </div>
+
+        <div class="quiz-footer">
+          <p class="keyboard-hint"><span class="keycap">1</span> – <span class="keycap">4</span> to choose</p>
+          <button class="primary-button" id="next-button" type="button" disabled>
+            Next question <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </div>
+
+      <aside class="side-card" aria-label="Question timer">
+        <div class="timer-ring" id="timer-ring">
+          <div class="timer-inner">
+            <span class="timer-label">TIME LEFT</span>
+            <span class="timer-number" id="timer-number">30</span>
+            <span class="timer-unit">seconds</span>
+          </div>
+        </div>
+        <div class="side-divider"></div>
+        <div class="side-stat">
+          <span class="stat-icon purple" aria-hidden="true">◎</span>
+          <div><span class="stat-label">TOTAL QUESTIONS</span><strong>25</strong></div>
+        </div>
+        <div class="side-stat">
+          <span class="stat-icon yellow" aria-hidden="true">✦</span>
+          <div><span class="stat-label">CORRECT ANSWERS</span><strong id="correct-count">0</strong></div>
+        </div>
+        <div class="side-note"><span aria-hidden="true">✧</span> Take your time. You’ve got this!</div>
+      </aside>
+    </section>
+
+    <section class="result-screen" id="result-screen" hidden aria-live="polite">
+      <div class="result-icon" aria-hidden="true">🏆</div>
+      <span class="eyebrow">CHALLENGE COMPLETE</span>
+      <h1 id="result-heading">Amazing work!</h1>
+      <p class="result-message" id="result-message"></p>
+      <div class="result-score"><strong id="final-score">0</strong><span> / 25<br><small>correct answers</small></span></div>
+      <div class="result-actions">
+        <button class="primary-button" id="review-button" type="button">Review wrong answers <span aria-hidden="true">→</span></button>
+        <button class="secondary-button" id="play-again-button" type="button">↻ &nbsp; Play again</button>
+      </div>
+    </section>
+
+    <section class="review-screen" id="review-screen" hidden aria-live="polite">
+      <div class="review-header">
+        <span class="eyebrow">LEARN FROM YOUR MISTAKES</span>
+        <h1>Let’s review</h1>
+        <p id="review-summary"></p>
+      </div>
+      <div class="review-list" id="review-list"></div>
+      <div class="review-actions">
+        <button class="secondary-button" id="back-to-results-button" type="button">← &nbsp; Back to results</button>
+        <button class="primary-button" id="review-restart-button" type="button">Try again <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <footer class="page-footer"><span>BUILT FOR CURIOUS MINDS</span><span>✦</span><span>ONE QUESTION AT A TIME</span></footer>
+  </main>
+</body>
+</html>
