@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <h2>AdminPanel</h2>
+                <p>Management System</p>
+            </div>
+
+            <nav>
+                <a href="#" class="active">🏠 Dashboard</a>
+                <a href="#">📈 Analytics</a>
+                <a href="#">👥 Users</a>
+                <a href="#">🛒 Orders</a>
+                <a href="#">📦 Products</a>
+                <a href="#">⚙️ Settings</a>
+            </nav>
+
+            <div class="profile">
+                <div class="profile-img">R</div>
+
+                <div>
+                    <h4>Riya Sharma</h4>
+                    <p>Administrator</p>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Header -->
+            <header class="topbar">
+
+                <div class="search">
+                    <button class="menu-btn">☰</button>
+                    🔍
+                    <span>Search anything...</span>
+                </div>
+
+                <div class="header-right">
+                    <span class="notification">🔔</span>
+                    <div class="user-icon">R</div>
+                </div>
+
+            </header>
+
+
+            <section class="content">
+
+                <!-- Page Heading -->
+                <div class="page-heading">
+
+                    <div>
+                        <h1>Dashboard</h1>
+                        <p>Here's a quick overview of your business.</p>
+                    </div>
+
+                    <button class="report-btn">
+                        + Add Report
+                    </button>
+
+                </div>
+
+
+                <!-- Statistics Cards -->
+                <div class="stats">
+
+                    <div class="card">
+                        <div class="card-top">
+                            <div class="icon green">₹</div>
+                            <span class="increase">↑ 16%</span>
+                        </div>
+
+                        <p>Total Revenue</p>
+                        <h2>₹2,86,740</h2>
+                        <small>Compared with last month</small>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="card-top">
+                            <div class="icon blue">🛒</div>
+                            <span class="increase">↑ 11%</span>
+                        </div>
+
+                        <p>Total Orders</p>
+                        <h2>1,246</h2>
+                        <small>Compared with last month</small>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="card-top">
+                            <div class="icon purple">👥</div>
+                            <span class="increase">↑ 19%</span>
+                        </div>
+
+                        <p>Active Users</p>
+                        <h2>5,842</h2>
+                        <small>Compared with last month</small>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="card-top">
+                            <div class="icon orange">%</div>
+                            <span class="increase">↑ 3.1%</span>
+                        </div>
+
+                        <p>Conversion Rate</p>
+                        <h2>6.8%</h2>
+                        <small>Compared with last month</small>
+                    </div>
+
+                </div>
+
+
+                <!-- Revenue and Orders -->
+                <div class="top-section">
+
+                    <!-- Revenue -->
+                    <div class="box revenue-box">
+
+                        <div class="box-heading">
+
+                            <div>
+                                <h3>Revenue Overview</h3>
+                                <p>Revenue generated during the year</p>
+                            </div>
+
+                            <strong>₹2,86,740</strong>
+
+                        </div>
+
+
+                        <div class="chart">
+
+                            <div class="bar bar1"></div>
+                            <div class="bar bar2"></div>
+                            <div class="bar bar3"></div>
+                            <div class="bar bar4"></div>
+                            <div class="bar bar5"></div>
+                            <div class="bar bar6"></div>
+                            <div class="bar bar7"></div>
+
+                        </div>
+
+
+                        <div class="months">
+                            <span>Jan</span>
+                            <span>Feb</span>
+                            <span>Mar</span>
+                            <span>Apr</span>
+                            <span>May</span>
+                            <span>Jun</span>
+                            <span>Jul</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Recent Orders -->
+                    <div class="box">
+
+                        <div class="box-title">
+                            <h3>Recent Orders</h3>
+                            <a href="#">View all</a>
+                        </div>
+
+                        <div class="table-container">
+
+                            <table>
+
+                                <thead>
+                                    <tr>
+                                        <th>Customer</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    <tr>
+                                        <td>Arjun Mehta</td>
+                                        <td>₹3,250</td>
+                                        <td class="delivered">Delivered</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Sneha Verma</td>
+                                        <td>₹5,780</td>
+                                        <td class="processing">Processing</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Karan Singh</td>
+                                        <td>₹2,890</td>
+                                        <td class="delivered">Delivered</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Pooja Agarwal</td>
+                                        <td>₹6,450</td>
+                                        <td class="pending">Pending</td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Bottom Section -->
+                <div class="bottom-section">
+
+                    <!-- Traffic -->
+                    <div class="box traffic-box">
+
+                        <div class="box-heading">
+
+                            <div>
+                                <h3>Traffic Overview</h3>
+                                <p>Visitors this week</p>
+                            </div>
+
+                            <span class="increase">↑ 21%</span>
+
+                        </div>
+
+
+                        <h2 class="visitor-count">
+                            12,684
+                        </h2>
+
+
+                        <div class="traffic-chart">
+
+                            <div class="traffic-bar t1"></div>
+                            <div class="traffic-bar t2"></div>
+                            <div class="traffic-bar t3"></div>
+                            <div class="traffic-bar t4"></div>
+                            <div class="traffic-bar t5"></div>
+                            <div class="traffic-bar t6"></div>
+                            <div class="traffic-bar t7"></div>
+
+                        </div>
+
+
+                        <div class="days">
+                            <span>Mon</span>
+                            <span>Tue</span>
+                            <span>Wed</span>
+                            <span>Thu</span>
+                            <span>Fri</span>
+                            <span>Sat</span>
+                            <span>Sun</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Products -->
+                    <div class="box">
+
+                        <div class="box-title">
+                            <h3>Top Products</h3>
+                            <a href="#">View all</a>
+                        </div>
+
+                        <div class="table-container">
+
+                            <table>
+
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Sales</th>
+                                        <th>Change</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    <tr>
+                                        <td>Gaming Laptop</td>
+                                        <td>3,180</td>
+                                        <td class="delivered">+17%</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Bluetooth Speaker</td>
+                                        <td>2,460</td>
+                                        <td class="delivered">+13%</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Smart Phone</td>
+                                        <td>1,875</td>
+                                        <td class="delivered">+10%</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Travel Bag</td>
+                                        <td>1,120</td>
+                                        <td class="delivered">+7%</td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
